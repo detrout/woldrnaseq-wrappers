@@ -1,0 +1,16 @@
+*~
+\.#*
+*.py[co]
+/__pycache__/
+/build/
+/docs/_build/
+/dist/
+/*.egg-info
+/.cache/
+/.pytest_cache/
+.coverage
+.buildinfo
+/.eggs/
+/htmlcov/
+/.tox/
+woldrnaseq/_version.py

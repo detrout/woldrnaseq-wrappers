@@ -1,0 +1,13 @@
+name: "archive_solo_counts"
+description: "Convert a set of matrix market exchage files into an annotated compressed archive"
+url: "https://github.com/detrout/woldlab-rna-seq"
+authors:
+  - Diane Trout
+input:
+  - Experiment accession
+  - library/biosample accession
+  - barcodes.tsv
+  - features.tsv
+  - a matrix market exchange coordinate sparse matrix file
+output:
+  - tar.gz file containing the input

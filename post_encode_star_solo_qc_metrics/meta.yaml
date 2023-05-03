@@ -1,0 +1,11 @@
+name: "post_star_solo_qc_metrics"
+description: "Post STAR solo single metrics"
+url: "https://github.com/detrout/woldlab-rna-seq"
+authors:
+  - Diane Trout
+input:
+  - STAR gene Summary.csv
+  - umi_plot png
+  - posted metadata file
+output:
+  - qc upload marker log file

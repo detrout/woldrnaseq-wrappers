@@ -1,0 +1,12 @@
+name: "post_encode_star_solo_files"
+description: "Post bam and mex gene archive files to the ENCODE portal"
+url: "https://github.com/detrout/woldlab-rna-seq"
+authors:
+  - Diane Trout
+input:
+  - bam filename
+  - mex gene archive filenames
+  - metadata file
+output:
+  - file.uploaded marker files for each posted file
+  - posted metadata file with accessions added

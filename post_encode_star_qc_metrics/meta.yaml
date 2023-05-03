@@ -1,0 +1,10 @@
+name: "post_star_qc_metrics"
+description: "Post general mapping metrics reported by STAR "
+url: "https://github.com/detrout/woldlab-rna-seq"
+authors:
+  - Diane Trout
+input:
+  - STAR Log.final.out
+  - metadata file
+output:
+  - metadata file updated with ENCODE accession ids

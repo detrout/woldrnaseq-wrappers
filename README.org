@@ -1,0 +1,5 @@
+* Introduction
+
+These are snakemake wrappers for various processing steps from
+[[https://github.com/detrout/woldlab-rna-seq][woldlab-rna-seq]].
+
