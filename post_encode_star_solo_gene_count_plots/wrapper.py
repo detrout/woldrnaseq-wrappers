@@ -1,5 +1,6 @@
 import logging
 import pandas
+from pathlib import Path
 import sys
 from encoded_client.encoded import ENCODED, DCCValidator, make_attachment
 
