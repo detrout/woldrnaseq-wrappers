@@ -1,3 +1,4 @@
+import logging
 import pandas
 from encoded_client.encoded import ENCODED, DCCValidator, make_attachment
 from woldrnaseq.models import (
