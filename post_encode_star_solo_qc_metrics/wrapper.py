@@ -77,8 +77,8 @@ if len(snakemake.log) > 0:
     logger.addHandler(logging.FileHandler(log))
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
-gene_summary = snakemake.input.gene_summary
-umi_plot = snakemake.input.umi_plot
+gene_summary = str(snakemake.input.gene_summary)
+umi_plot = str(snakemake.input.umi_plot)
 posted = str(snakemake.input.posted)
 
 output = snakemake.output[0]
