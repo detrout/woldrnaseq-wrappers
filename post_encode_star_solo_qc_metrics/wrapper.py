@@ -100,7 +100,7 @@ try:
         results = server.post_json("/star_solo_quality_metric/", qc)
     else:
         results = qc
-    with open(posted, "wt") as outstream:
+    with open(output, "wt") as outstream:
         outstream.write(str(results))
 except Exception as e:
     logger.error(e)
