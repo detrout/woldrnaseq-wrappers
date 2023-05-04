@@ -62,9 +62,9 @@ assert len(accession) > 0 and not pandas.isnull(accession)
 qc = prepare_sc_count_matrix_qc_metric(
     snakemake.config,
     accession,
-    input.pct_mt_plot,
-    input.genes_by_count_plot,
-    input.counts_violin_plot
+    pct_mt_plot,
+    genes_by_count_plot,
+    counts_violin_plot
 )
 
 try:
