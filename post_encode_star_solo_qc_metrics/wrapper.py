@@ -81,7 +81,7 @@ gene_summary = str(snakemake.input.gene_summary)
 umi_plot = str(snakemake.input.umi_plot)
 posted = str(snakemake.input.posted)
 
-output = snakemake.output[0]
+output = str(snakemake.output[0])
 
 dry_run = snakemake.params.get("dry_run", False)
 
