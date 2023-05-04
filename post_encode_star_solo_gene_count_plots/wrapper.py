@@ -1,6 +1,5 @@
 import logging
 import pandas
-from pathlib import Path
 import sys
 from encoded_client.encoded import ENCODED, DCCValidator, make_attachment
 
@@ -41,13 +40,13 @@ if len(snakemake.log) > 0:
     logger.addHandler(logging.FileHandler(log))
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
-archive = Path(snakemake.input.archive)
-pct_mt_plot = Path(snakemake.input.pct_mt_plot)
-genes_by_count_plot = Path(snakemake.input.genes_by_count_plot)
-counts_violin_plot = Path(snakemake.input.counts_violin_plot)
-posted = Path(snakemake.input.posted)
+archive = str(snakemake.input.archive)
+pct_mt_plot = str(snakemake.input.pct_mt_plot)
+genes_by_count_plot = str(snakemake.input.genes_by_count_plot)
+counts_violin_plot = str(snakemake.input.counts_violin_plot)
+posted = str(snakemake.input.posted)
 
-output = Path(snakemake.output[0])
+output = str(snakemake.output[0])
 
 dry_run = snakemake.params.get("dry_run", False)
 

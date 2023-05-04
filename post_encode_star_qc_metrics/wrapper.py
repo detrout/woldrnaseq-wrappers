@@ -1,6 +1,5 @@
 import logging
 import pandas
-from pathlib import Path
 import sys
 
 from encoded_client.encoded import ENCODED, DCCValidator
@@ -60,9 +59,9 @@ if len(snakemake.log) > 0:
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
 log_final = snakemake.input.log_final
-posted = Path(snakemake.input.posted)
+posted = str(snakemake.input.posted)
 
-output_filename = Path(snakemake.output[0])
+output_filename = str(snakemake.output[0])
 
 dry_run = snakemake.params.get("dry_run", False)
 
