@@ -58,7 +58,7 @@ if len(snakemake.log) > 0:
     logger.addHandler(logging.FileHandler(log))
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
-log_final = snakemake.input.log_final
+log_final = str(snakemake.input.log_final)
 posted = str(snakemake.input.posted)
 
 output_filename = str(snakemake.output[0])
@@ -69,7 +69,7 @@ server = ENCODED(snakemake.params.submit_host)
 uploaded = pandas.read_csv(posted)
 
 accession = uploaded[uploaded["file_format"] == "bam"]["accession"].to_list()
-qc = prepare_star_qc_metric(snakemake.config, accession, input.log_final)
+qc = prepare_star_qc_metric(snakemake.config, accession, log_final)
 
 try:
     validator = DCCValidator(server)
