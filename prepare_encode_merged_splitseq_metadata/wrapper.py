@@ -81,12 +81,16 @@ def generate_star_solo_merged_sheet(config, records):
     return sheet
 
 
+gene_unique_raw = str(snakemake.input.gene_unique_raw)
+gene_multi_raw = str(snakemake.input.gene_multi_raw)
+output_filename = str(snakemake.output[0])
+
 records = {
-    "unfiltered sparse gene count matrix of unique reads": snakemake.input.gene_unique_raw,
-    "unfiltered sparse gene count matrix of all reads": snakemake.input.gene_multi_raw,
+    "unfiltered sparse gene count matrix of unique reads": gene_unique_raw,
+    "unfiltered sparse gene count matrix of all reads": gene_multi_raw,
 }
 
 
 metadata = generate_star_solo_merged_sheet(snakemake.config, records)
 metadata = pandas.DataFrame(metadata)
-metadata.to_csv(snakemake.output[0], index=False)
+metadata.to_csv(output_filename, index=False)
