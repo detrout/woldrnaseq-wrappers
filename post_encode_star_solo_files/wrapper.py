@@ -15,7 +15,8 @@ if len(snakemake.log) > 0:
     logger.addHandler(logging.FileHandler(log))
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
-server = ENCODED(snakemake.params.submit_host)
+submit_host = snakemake.params.submit_host
+server = ENCODED(submit_host)
 
 metadata = str(snakemake.input.metadata)
 dry_run = snakemake.params.get("dry_run", False)
@@ -36,7 +37,7 @@ for i, row in metadata.iterrows():
             submitted_file = server.get_json("md5:{}".format(row["md5sum"]))
             metadata.at[i, "accession"] = submitted_file["accession"]
             metadata.at[i, "uuid"] = submitted_file["uuid"]
-            upload_file = Path("{}.{}.upload".format(row["submitted_file_name"], host))
+            upload_file = Path("{}.{}.upload".format(row["submitted_file_name"], submit_host))
             if not upload_file.exists():
                 upload_file.touch()
         except HTTPError as e:
