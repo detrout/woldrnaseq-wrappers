@@ -40,7 +40,7 @@ if len(snakemake.log) > 0:
     logger.addHandler(logging.FileHandler(log))
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
-archive = str(snakemake.input.archive)
+archive = Path(str(snakemake.input.archive))
 pct_mt_plot = str(snakemake.input.pct_mt_plot)
 genes_by_count_plot = str(snakemake.input.genes_by_count_plot)
 counts_violin_plot = str(snakemake.input.counts_violin_plot)
