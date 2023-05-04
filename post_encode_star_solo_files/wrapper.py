@@ -4,7 +4,7 @@ import pandas
 from pathlib import Path
 import sys
 from encoded_client.encoded import ENCODED, HTTPError
-from encoded_client.submission import process_files
+from encoded_client.submission import process_endpoint_files
 
 assert len(snakemake.input) == len(snakemake.output), "List of files to process needs to be same length"
 
@@ -44,7 +44,7 @@ for i, row in metadata.iterrows():
             if e.response.status_code != 404:
                 logger.warning("Unexpected status code {}".format(e))
 
-uploaded = process_files(server, "/files/", metadata, dry_run=dry_run)
+uploaded = process_endpoint_files(server, "/files/", metadata, dry_run=dry_run)
 
 logger.info("Processed {} files".format(len(uploaded)))
 logger.info(metadata)
