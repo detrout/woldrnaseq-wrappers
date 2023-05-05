@@ -38,7 +38,9 @@ for i, row in metadata.iterrows():
             submitted_file = server.get_json("md5:{}".format(row["md5sum"]))
             metadata.at[i, "accession"] = submitted_file["accession"]
             metadata.at[i, "uuid"] = submitted_file["uuid"]
-            upload_file = Path("{}.{}.upload".format(row["submitted_file_name"], submit_host))
+            upload_file = Path("{}.{}.upload".format(
+                row["submitted_file_name"].replace("/", "_"), submit_host))
+            print("Creating already uploaded file marker", upload_file)
             if not upload_file.exists():
                 upload_file.touch()
         except HTTPError as e:
