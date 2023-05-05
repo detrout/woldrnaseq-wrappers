@@ -18,12 +18,13 @@ logger.addHandler(logging.StreamHandler(sys.stderr))
 submit_host = snakemake.params.submit_host
 server = ENCODED(submit_host)
 
-metadata = str(snakemake.input.metadata)
+metadata_filename = str(snakemake.input.metadata)
 dry_run = snakemake.params.get("dry_run", False)
-posted = str(snakemake.output.posted)
+
+posted_filename = str(snakemake.output.posted)
 
 metadata = pandas.read_csv(
-    metadata,
+    metadata_filename,
     dtype={
         "uuid": str,
         "accession": str
@@ -48,4 +49,4 @@ uploaded = process_endpoint_files(server, "/files/", metadata, dry_run=dry_run)
 
 logger.info("Processed {} files".format(len(uploaded)))
 logger.info(metadata)
-metadata.to_csv(posted, index=False)
+metadata.to_csv(posted_filename, index=False)
