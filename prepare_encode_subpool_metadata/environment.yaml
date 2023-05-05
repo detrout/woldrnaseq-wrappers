@@ -1,4 +1,4 @@
 dependencies:
   - pip
   - pip:
-      - git+https://github.com/detrout/encoded_client.git
+      - encoded_client==0.3.0
