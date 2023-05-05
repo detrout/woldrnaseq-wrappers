@@ -1,5 +1,6 @@
 
 import logging
+import os
 import pandas
 from pathlib import Path
 import sys
@@ -21,6 +22,10 @@ server = ENCODED(submit_host)
 metadata_filename = str(snakemake.input.metadata)
 dry_run = snakemake.params.get("dry_run", False)
 
+bam_upload = Path(str(snakemake.output.bam))
+gene_unique_raw_upload = Path(str(snakemake.output.gene_unique_raw))
+gene_multi_raw_upload = Path(str(snakemake.output.gene_multi_raw))
+sj_unique_raw_upload = Path(str(snakemake.output.sj_unique_raw))
 posted_filename = str(snakemake.output.posted)
 
 metadata = pandas.read_csv(
@@ -52,3 +57,17 @@ uploaded = process_endpoint_files(server, "/files/", metadata, dry_run=dry_run)
 logger.info("Processed {} files".format(len(uploaded)))
 logger.info(metadata)
 metadata.to_csv(posted_filename, index=False)
+
+creation_errors = False
+for upload in [bam_upload, gene_unique_raw_upload, gene_multi_raw_upload, sj_unique_raw_upload]:
+    if not upload.exists():
+        logger.info("Unable to find {}".format(upload))
+        creation_errors = True
+
+if creation_errors:
+    for name in sorted(os.listdir()):
+        logger.info("{} {}".format(os.getcwd(), name))
+
+    curdir = Path(metadata_filename).parent
+    for name in sorted(os.listdir()):
+        logger.info("{} {}".format(curdir, name))
