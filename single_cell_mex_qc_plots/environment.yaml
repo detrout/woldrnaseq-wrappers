@@ -2,7 +2,7 @@ channels:
   - conda-forge
 dependencies:
   - scanpy==1.9.3
-  - matplotlib
+  - matplotlib==3.7.1
   - pip
   - pip:
       - mex_gene_archive==0.2.2
