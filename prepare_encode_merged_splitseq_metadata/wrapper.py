@@ -46,11 +46,8 @@ def generate_star_solo_merged_metadata(config, records):
             "award": config["award"],
             "lab": config["lab"],
         }
-        if file_type == "bam":
-            obj["step_run"] = config["alignment_step_run"]
-            obj["aliases"] = [alignment_alias]
-        elif file_type == "tar":
-            obj["step_run"] = config["quantification_step_run"]
+        if file_type == "tar":
+            obj["step_run"] = config["merge_quantification_matrix_step_run"]
         else:
             print("Unknown file type {}".format(file_type))
         rows.append(obj)
