@@ -1,3 +1,0 @@
-dependencies:
-  - pip:
-      mex_gene_archive==0.2.2
